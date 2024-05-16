@@ -33,6 +33,8 @@ class HomeController extends Controller
         $data['customer_count'] = Customer::count();
         $data['barang_count'] = Barang::count();
         $data['transaksi_count'] = Sale::count();
+        $data['grand_total'] = Sale::sum('total_bayar');
+
         return view('home', $data);
     }
 }

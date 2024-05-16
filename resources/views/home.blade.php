@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <form action="post" class="space-y-4" id="form-filter">
                     {{ csrf_field() }}
-                    <div class="row g-6 mb-6">
+                    <!-- <div class="row g-6 mb-6">
                         <div class="col-md-6 col-xl-6">
                             <div class="form-floating form-floating-outline mb-2">
                                 <input class="form-control dob-picker" type="date" id="tanggal-awal" />
@@ -24,7 +24,7 @@
                                 <label for="tanggal-akhir">Tanggal Akhir</label>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-floating form-floating-outline">
                         <select id="filter-customer" class="select2 form-select form-select-lg" data-allow-clear="true">
                             <option value="" selected>Pilih Customer</option>
@@ -130,6 +130,16 @@
                         <th>Total</th>
                     </tr>
                 </thead>
+                <tbody>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colspan="7" class="fw-bold fs-7">Grand Total</th>
+                        <th colspan="2" class="text-end fs-7 fw-bold">Rp. {{ number_format($grand_total, 0, ',', '.') }}
+                        </th>
+
+                    </tr>
+                </thead>
             </table>
         </div>
     </div>
@@ -158,7 +168,8 @@
                 {
                     data: "kode",
                     render: function(data, type, row) {
-                        return '<p class="table-td">' + moment(row.tgl).format('YYYYMMDD') + '-' + data + '</p>';
+                        return '<p class="table-td">' + moment(row.tgl).format('YYYYMMDD') + '-' +
+                            data + '</p>';
                     }
                 },
                 {
@@ -224,21 +235,18 @@
             transaksi.ajax.reload();
         });
 
+        // Broken Filter
         $('#tanggal-awal, #tanggal-akhir').on('change', function() {
             var minDateStr = $('#tanggal-awal').val();
             var maxDateStr = $('#tanggal-akhir').val();
 
-            // Konversi format tanggal dari 'YYYY-MM-DD' ke 'DD MMMM YYYY'
-            var min = moment(minDateStr, 'YYYY-MM-DD').format('DD MMMM YYYY');
-            var max = moment(maxDateStr, 'YYYY-MM-DD').format('DD MMMM YYYY');
+            var min = moment(minDateStr).format('DD MMMM YYYY');
+            var max = moment(maxDateStr).format('DD MMMM YYYY');
 
-            // Pastikan tanggal yang diubah benar-benar valid
-            if (!moment(minDateStr, 'YYYY-MM-DD', true).isValid() || !moment(maxDateStr, 'YYYY-MM-DD', true).isValid()) {
-                // Tangani kasus tanggal tidak valid
+            if (!moment(minDateStr, true).isValid() || !moment(maxDateStr, true)
+                .isValid()) {
                 return;
             }
-
-            // Lakukan filter pada kolom tanggal di sini
             transaksi.column(2).search(min + ' | ' + max).draw();
         });
 

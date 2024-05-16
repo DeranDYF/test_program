@@ -1,22 +1,25 @@
 <!doctype html>
 
-<html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="/assets/" data-template="vertical-menu-template" data-style="light">
+<html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default"
+    data-assets-path="/assets/" data-template="vertical-menu-template" data-style="light">
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
     <title>Test Programming PT. Mitra Sinerji Teknoindo | Login</title>
 
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/assets/img/pt/logo-pt.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap"
+        rel="stylesheet" />
 
     <!-- Icons -->
     <link rel="stylesheet" href="/assets/vendor/fonts/remixicon/remixicon.css" />
@@ -46,7 +49,9 @@
                         <form class="mb-5" action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="form-floating form-floating-outline mb-5">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" value="{{ old('email') }}" required autocomplete="email" />
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Enter your email" value="{{ old('email') }}" required
+                                    autocomplete="email" />
                                 <label for="email">Email</label>
                                 @error('email')
                                 <span class="text-danger" role="alert">
@@ -58,10 +63,14 @@
                                 <div class="form-password-toggle">
                                     <div class="input-group input-group-merge">
                                         <div class="form-floating form-floating-outline">
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Enter your password" aria-describedby="password" />
+                                            <input id="password" type="password"
+                                                class="form-control @error('password') is-invalid @enderror"
+                                                name="password" required autocomplete="current-password"
+                                                placeholder="Enter your password" aria-describedby="password" />
                                             <label for="password">Password</label>
                                         </div>
-                                        <span class="input-group-text cursor-pointer"><i class="ri-eye-off-line"></i></span>
+                                        <span class="input-group-text cursor-pointer"><i
+                                                class="ri-eye-off-line"></i></span>
                                     </div>
                                 </div>
                                 @error('password')
@@ -72,7 +81,8 @@
                             </div>
                             <div class="mb-5 d-flex justify-content-between mt-5">
                                 <div class="form-check mt-2">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                        {{ old('remember') ? 'checked' : '' }} />
                                     <label class="form-check-label" for="remember-me"> Ingat Saya </label>
                                 </div>
 
@@ -81,16 +91,18 @@
                                 <button class="btn btn-primary d-grid w-100" type="submit">Masuk</button>
                             </div>
                         </form>
-
-                        <p class="text-center">
+                        <!-- <p class="text-center">
                             <span>Baru di platform kami?</span>
                             <a href="{{ route('register') }}">
                                 <span>Buat akun baru</span>
                             </a>
-                        </p>
+                        </p> -->
                     </div>
                 </div>
-                <img alt="mask" src="/assets/img/illustrations/auth-basic-login-mask-light.png" class="authentication-image d-none d-lg-block" data-app-light-img="illustrations/auth-basic-login-mask-light.png" data-app-dark-img="illustrations/auth-basic-login-mask-dark.png" />
+                <img alt="mask" src="/assets/img/illustrations/auth-basic-login-mask-light.png"
+                    class="authentication-image d-none d-lg-block"
+                    data-app-light-img="illustrations/auth-basic-login-mask-light.png"
+                    data-app-dark-img="illustrations/auth-basic-login-mask-dark.png" />
             </div>
         </div>
     </div>
